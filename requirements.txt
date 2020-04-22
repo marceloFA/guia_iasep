@@ -2,3 +2,4 @@ requests
 django
 lxml
 beautifulsoup4
+python-slugify

@@ -1,0 +1,13 @@
+<h2>{{service.name}} em {{city.name}}</h2>
+{% for place in places %}
+  <ul>
+    <li>{{ place.name }}
+      <ul>
+        <li>{{ place.adress }}</li>
+        <li>{{ place.phone }}</li>
+      </ul>
+      
+    </li>
+    <br />
+  </ul>
+{% endfor %}

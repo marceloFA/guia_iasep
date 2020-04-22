@@ -1,0 +1,12 @@
+{{ city.name }} tem os seguintes serviços:
+
+{% for service in services %}
+  <ul>
+    <li>
+        <a href="{% url 'guia:places_listing' city_slug=city.slug service_slug=service.slug %}">
+            {{ service.name }}
+        </a>
+    </li>
+    <br />
+  </ul>
+{% endfor %}

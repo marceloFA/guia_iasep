@@ -1,6 +1,7 @@
 from django.core.management.base import BaseCommand
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
+from slugify import slugify
 import requests
 import traceback
 
@@ -26,7 +27,10 @@ class Command(BaseCommand):
             for id, city in zip(id_list, cities_list):
                 if not id: continue
                 try:
-                    City.objects.create(name=city,id=id)
+                    City.objects.create(id=id,
+                                        name=city,
+                                        slug=slugify(city)
+                                        )
                     print(f'Added {city}')
                 except:
                     #traceback.print_exc()
@@ -46,7 +50,9 @@ class Command(BaseCommand):
             for id, service in zip(id_list, services_list):
                 try:
                     if not id: continue
-                    Service.objects.create(name=service,id=id)
+                    Service.objects.create( id=id,
+                                            name=service,
+                                            slug=slugify(service))
                     print(f'Added {service}')
                 except:
                     #traceback.print_exc()
@@ -137,8 +143,8 @@ class Command(BaseCommand):
         html = urlopen(url)
         soup = BeautifulSoup(html, parser)
         
-        update_city_list(soup)
-        update_service_list(soup)
+        #update_city_list(soup)
+        #update_service_list(soup)
         update_place_list(url, parser)
 
 

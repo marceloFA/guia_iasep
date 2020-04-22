@@ -1,1 +1,5 @@
 venv/
+.vscode
+__pycache__
+guia/__pycache__
+guia_iasep/__pycache__
