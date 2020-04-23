@@ -3,7 +3,11 @@ from guia.models import City, Service, Place
 
 def homepage(request, template_name="homepage.html"):
     """ Raíz do website"""
-    return render(request, template_name, context={"cities":City.objects.all()})
+    context = {
+        "cities":City.objects.all(),
+        "services":Service.objects.all()
+        }
+    return render(request, template_name, context=context)
 
 def city_detail(request, city_slug, template_name="city_detail.html"):
     """ All Services of a City"""

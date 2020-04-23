@@ -1,23 +1,27 @@
 {% extends 'base.html' %}
 {% block content %}
     {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'guia/css/dropdown.css' %}">
+    
 
   <!-- First Section-->
   <div class="splash-container">
+      
     <div class="splash">
         <h1 class="splash-head">Guia de serviços IASEP</h1>
         <p class="splash-subhead">
             Encontre clínicas, laboratórios, hospitais, médicos e outros profissionais da rede IASEP perto de você.
         </p>
-        <p>
-            <a href="http://purecss.io" class="pure-button pure-button-primary" id="select-city">Escolher município</a>
-        </p>
-        <p>
-            <a href="http://purecss.io" class="pure-button pure-button-primary" id="select-service">Escolher serviço</a>
-        </p>
+        
+        <p><a onclick="openNav('cityNav')" class="pure-button pure-button-primary" id="select-city">Escolher município</a></p>
+        <p><a onclick="openNav('serviceNav')" class="pure-button pure-button-primary" id="select-service"> Escolher serviço</a></p>
+        <p><a href="#" onclick="routeTo(citySlug, serviceSlug)" class="pure-button pure-button-primary" id="route-to"> Encontrar </a></p>
+        
     </div>
   </div>
   <!-- End of first Section-->
+
+
 
   <div class="content-wrapper">
     <div class="content">
@@ -118,4 +122,26 @@
     </div>
     -->
   </div>
+
+  <!-- City overlay -->
+  <div id="cityNav" class="overlay-div">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav('cityNav')">&times;</a>
+    <div class="overlay-content">
+        {% for city in cities %}
+            <a onClick="fillButton('select-city', 'cityNav', '{{city.name}}', '{{city.slug}}')">{{city.name}}</a>
+        {% endfor %}
+    </div>
+  </div>
+
+    <!-- Service overlay -->
+    <div id="serviceNav" class="overlay-div">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav('serviceNav')">&times;</a>
+        <div class="overlay-content">
+            {% for service in services %}
+                <a onClick="fillButton('select-service', 'serviceNav', '{{service.name}}', '{{service.slug}}')">{{service.name|lower|capfirst}}</a>
+            {% endfor %}
+        </div>
+      </div>
+
+<script src="{% static 'guia/js/dropdown.js' %}"></script>
 {% endblock %}

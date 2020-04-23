@@ -191,6 +191,7 @@ a.pure-button-primary {
 /* We want to give the content area some more padding */
 .content {
     padding: 1em 1em 3em;
+    text-align: center;
 }
 
 /* This is the class used for the main content headers (<h2>) */
@@ -312,9 +313,10 @@ a.pure-button-primary {
     }
 
     /*Button from inital section*/
-    #select-city{
+    #select-city, #select-service, #route-to{
         margin-bottom:15px;
     }
+
 
     /* Outer div from second section */
     .content{
