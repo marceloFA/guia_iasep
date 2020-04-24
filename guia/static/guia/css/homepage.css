@@ -132,37 +132,26 @@ a.pure-button-primary {
  */
 
 .splash-container {
+    padding-top:100px;
     background: #006400;
-    z-index: 1;
-    overflow: hidden;
-    /* The following styles are required for the "scroll-over" effect */
-    width: 100%;
-    height: 88%;
-    top: 0;
-    left: 0;
-    position: fixed !important;
+    height: 80%;
 }
 
 .splash {
     /* absolute center .splash within .splash-container */
     width: 80%;
-    height: 50%;
     margin: auto;
-    position: absolute;
-    top: 100px; left: 0; bottom: 0; right: 0;
     text-align: center;
     text-transform: uppercase;
 }
 
 /* This is the main heading that appears on the blue section */
 .splash-head {
-    font-size: 20px;
+    font-size: 25px;
     font-weight: bold;
     color: white;
-    border: 3px solid white;
     padding: 1em 1.6em;
     font-weight: 100;
-    border-radius: 5px;
     line-height: 1em;
 }
 
@@ -179,11 +168,7 @@ a.pure-button-primary {
  */
 .content-wrapper {
     /* These styles are required for the "scroll-over" effect */
-    position: absolute;
-    top: 87%;
     width: 100%;
-    min-height: 12%;
-    z-index: 2;
     background: white;
 
 }
@@ -258,7 +243,6 @@ a.pure-button-primary {
     to work with */
     .splash {
         width: 50%;
-        height: 50%;
     }
 
     .splash-head {
@@ -356,4 +340,13 @@ a.pure-button-primary {
     #legal-information #official-guide-button{
         margin-bottom: 50px;
     }
+
+    .splash-container {
+        padding-top:80px;
+  }
+
+  @media (max-width: 400px){
+      .splash-container{
+          padding-top: 5px;
+      }
   }

@@ -1,13 +1,89 @@
-<h2>{{service.name}} em {{city.name}}</h2>
-{% for place in places %}
-  <ul>
-    <li>{{ place.name }}
-      <ul>
-        <li>{{ place.adress }}</li>
-        <li>{{ place.phone }}</li>
-      </ul>
-      
-    </li>
-    <br />
-  </ul>
-{% endfor %}
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'guia/css/places_listing.css' %}">
+<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/grids-responsive-min.css">
+
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+        <div class="header">
+            <h1 class="brand-title">{{service.name|lower|capfirst}}</h1>
+            <!-- Places counter-->
+            {% if not places %}
+            <h2 class="brand-tagline">Nenhuma opção disponível em {{city.name}}</h2>
+            {% else %}
+            <h2 class="brand-tagline">{{places|length}} opç{{ places|length|pluralize:"ão,ões" }} disponíve{{places|length|pluralize:"l,is"}} em {{city.name}}</h2>
+            {% endif %}
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="pure-button pure-button=primary" href="/">
+                            Voltar ao ínicio
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <!--
+        TODO:
+        Remove a primera hd do primeiro item da lista
+        Implementa o botão de ligar
+        Verifica a compatibilidade com os leitores de telas para deficientes visuais
+
+
+
+    -->
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+            <!-- A wrapper for all the blog posts -->
+            <div class="posts">
+            {% if not places %}
+                <!-- A single blog post -->
+                <section class="post">
+                    <header class="post-header">
+                        <h3 class="post-title">Parece que o IASEP ainda não fornece esse serviço nessa cidade</h3>
+
+                        <p class="post-meta">
+                            <a class="post-category post-category-design" href="#">Ligar para o IASEP</a> <a class="post-category post-category-pure" href="#">Mandar email para o IASEP</a>
+                        </p>
+                    </header>
+
+                    <div class="post-description">
+                        <p>Entre em contato com o IASEP para mais informações sobre a disponibilidade deste serviço.<br> Você também pode tentar buscar este serviço em cidades próximas.</p>
+                    </div>
+                </section>
+            {% else %}
+
+            {% for place in places %}
+                <section class="post">
+                    <header class="post-header">
+
+                        <h3 class="post-title">{{ place.name|lower|title }}</h3>
+
+                        <p class="post-meta">
+                            {{ place.phone|lower|title }} <a class="post-category post-category-js" href="#">Ligar</a>
+                        </p>
+                    </header>
+
+                    <div class="post-description">
+                        <p>
+                            
+                        </p>
+                        <p>
+                            {{ place.adress|lower|title }}
+                        </p>
+                    </div>
+                    <h1 class="content-subhead"></h1>
+                </section>
+            {% endfor %}
+            {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

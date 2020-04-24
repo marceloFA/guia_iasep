@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
     {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'guia/css/homepage.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'guia/css/dropdown.css' %}">
     
 
@@ -8,6 +9,7 @@
   <div class="splash-container">
       
     <div class="splash">
+
         <h1 class="splash-head">Guia de serviços IASEP</h1>
         <p class="splash-subhead">
             Encontre clínicas, laboratórios, hospitais, médicos e outros profissionais da rede IASEP perto de você.
@@ -69,7 +71,7 @@
         </div>
         <div class="l-box-lrg is-center pure-u-1 pure-u-md-1-2 pure-u-lg-2-5">
             <a 
-                class="button-xlarge pure-button pure-button-active" 
+                class="pure-button pure-button-primary" 
                 href="http://www.e-saude.iasep.pa.gov.br/servicos" 
                 target="_black" 
                 id="official-guide-button">
