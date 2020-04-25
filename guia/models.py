@@ -50,6 +50,7 @@ class Place(models.Model):
     name = models.CharField(max_length=120)
     adress = models.CharField(max_length=180)
     phone = models.CharField(max_length=120)
+    callable_phone = models.CharField(max_length=15)
     created_date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):

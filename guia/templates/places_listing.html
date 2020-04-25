@@ -63,9 +63,15 @@
 
                         <h3 class="post-title">{{ place.name|lower|title }}</h3>
 
+                        {% if place.callable_phone %}
                         <p class="post-meta">
-                            {{ place.phone|lower|title }} <a class="post-category post-category-js" href="#">Ligar</a>
+                            {{ place.phone|lower|title }} 
+                            <a class="post-category post-category-js" 
+                            href="tel:{{place.callable_phone}}">
+                                Ligar
+                            </a>
                         </p>
+                        {% endif %}
                     </header>
 
                     <div class="post-description">

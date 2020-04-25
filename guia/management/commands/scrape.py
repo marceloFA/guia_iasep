@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 from slugify import slugify
 import requests
 import traceback
+import re
 
 from guia.models import City, Service, Place
 
@@ -96,6 +97,7 @@ class Command(BaseCommand):
                     place_dict['name'] = name
                     place_dict['adress'] = get_place_adress(place)
                     place_dict['phone'] =  get_place_phone(place)
+                    place_dict['callable_phone'] = get_place_callable_phone(place_dict['phone'])
                     place_dict['service'] = service_id
                     
                     # maybe save new places
@@ -104,12 +106,10 @@ class Command(BaseCommand):
                         print(f'Added {place_dict["name"]}')
                     except:
                         print(f'Did not add {place_dict["name"]} \n\n\n')
-                        traceback.print_exc()
+                        #traceback.print_exc()
             
         
         # helper functions
-
-        
         def get_place_name(place):
             name_anchor = place.find('div',{'class':'info-medico'}).find('a')
             try:
@@ -126,6 +126,15 @@ class Command(BaseCommand):
         def get_place_phone(place):
             phone_li = place.find('div',{'class':'info-endereco'}).find('ul').select('ul > li')[1]
             return phone_li.get_text(strip=True)
+        
+        def get_place_callable_phone(phone_info):
+                        
+            phone_regex = r'\(?([1-9]{2})?\)?\s?-?(?:[2-8]|9[1-9])[0-9]{3}\-?\s?[0-9]{4}'
+            matches = re.search(phone_regex, phone_info)
+            phone = ''
+            if matches:
+                phone = slugify(matches[0])
+            return phone
         
         def get_place_service_id(place):
             service_h1 = place.find_previous_sibling('h1')
