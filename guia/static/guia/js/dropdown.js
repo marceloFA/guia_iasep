@@ -28,15 +28,14 @@ function fillButton(buttonId, navId, text, slug) {
 // route the user to the correct 'city' or 'service in a city' page
 function routeTo(citySlug, serviceSlug){
     
-    // we need at leat the city slug
-    if (!citySlug){
-        alert("Por favor, selecione uma cidade");
+    if (!citySlug && !serviceSlug){
+        alert("Por favor, selecione uma cidade e um serviço!");
     }
-    // if only city slug
+    
     else if (citySlug && !serviceSlug){
-        document.getElementById('route-to').href = `/${citySlug}`;
+        alert("Por favor, selecione um serviço");
     }
-    // if both city and service slug are presents
+    
     else if (citySlug && serviceSlug){
         document.getElementById('route-to').href = `/${citySlug}/${serviceSlug}`;
     }

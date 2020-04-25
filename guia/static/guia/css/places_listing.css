@@ -134,6 +134,18 @@ h3 {
     margin-bottom: 10px;
 }
 
+.post-meta-buttons a{
+    padding: 1.2em 3.6em;
+    display: inline-block;
+}
+
+@media (max-width: 550px){
+    .post-meta-buttons a{
+        margin-top: 20px;
+    }
+}
+
+
 
 
 .post-category {

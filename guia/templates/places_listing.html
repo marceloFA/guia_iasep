@@ -46,13 +46,15 @@
                     <header class="post-header">
                         <h3 class="post-title">Parece que o IASEP ainda não fornece esse serviço nessa cidade</h3>
 
-                        <p class="post-meta">
-                            <a class="post-category post-category-design" href="#">Ligar para o IASEP</a> <a class="post-category post-category-pure" href="#">Mandar email para o IASEP</a>
-                        </p>
                     </header>
 
                     <div class="post-description">
                         <p>Entre em contato com o IASEP para mais informações sobre a disponibilidade deste serviço.<br> Você também pode tentar buscar este serviço em cidades próximas.</p>
+
+                        <p class="post-meta post-meta-buttons">
+                            <a class="post-category post-category-design" href="tel:91-3366-6100">Ligar para o IASEP</a> 
+                            <a class="post-category post-category-pure" href="http://www.iasep.pa.gov.br/contatos">Outros contatos IASEP</a>
+                        </p>
                     </div>
                 </section>
             {% else %}
@@ -64,22 +66,22 @@
                         <h3 class="post-title">{{ place.name|lower|title }}</h3>
 
                         {% if place.callable_phone %}
-                        <p class="post-meta">
-                            {{ place.phone|lower|title }} 
-                            <a class="post-category post-category-js" 
-                            href="tel:{{place.callable_phone}}">
-                                Ligar
-                            </a>
-                        </p>
+                        
                         {% endif %}
                     </header>
 
                     <div class="post-description">
-                        <p>
-                            
-                        </p>
+
                         <p>
                             {{ place.adress|lower|title }}
+                        </p>
+
+                        <p class="post-meta">
+                            
+                            <a class="post-category post-category-js" 
+                            href="tel:{{place.callable_phone}}">
+                                Ligar
+                            </a>
                         </p>
                     </div>
                     <h1 class="content-subhead"></h1>
