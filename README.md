@@ -1,5 +1,5 @@
 # IASEP Medical Services Guide
-![Medical Services Guide](https://raw.githubusercontent.com/marcelofa/deadlines_app/master/banner.png)
+![Medical Services Guide](https://raw.githubusercontent.com/marcelofa/guia_iasep/master/banner.png)
 
 This is a small medical services guide project intended to provide better user experience than the [standard guide](http://www.e-saude.iasep.pa.gov.br/servicos) from the state goverment.
 
