@@ -3,3 +3,5 @@ django
 lxml
 beautifulsoup4
 python-slugify
+pep8
+pylint

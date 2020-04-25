@@ -140,7 +140,7 @@ class Command(BaseCommand):
             service_h1 = place.find_previous_sibling('h1')
             service_text = service_h1.get_text(strip=True)
             service_instance = Service.objects.filter(name=service_text).first() or None
-            # in case we can't find the service instance this will return none
+
             return service_instance
         
         
@@ -152,8 +152,8 @@ class Command(BaseCommand):
         html = urlopen(url)
         soup = BeautifulSoup(html, parser)
         
-        #update_city_list(soup)
-        #update_service_list(soup)
+        update_city_list(soup)
+        update_service_list(soup)
         update_place_list(url, parser)
 
 

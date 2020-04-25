@@ -35,6 +35,10 @@ function routeTo(citySlug, serviceSlug){
     else if (citySlug && !serviceSlug){
         alert("Por favor, selecione um serviço");
     }
+
+    else if (!citySlug && serviceSlug){
+        alert("Por favor, selecione uma cidade");
+    }
     
     else if (citySlug && serviceSlug){
         document.getElementById('route-to').href = `/${citySlug}/${serviceSlug}`;
