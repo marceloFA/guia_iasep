@@ -5,6 +5,7 @@ beautifulsoup4
 python-slugify
 pep8
 pylint
+psycopg2-binary
 gunicorn
 dj-database-url
 whitenoise
