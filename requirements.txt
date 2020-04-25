@@ -5,3 +5,7 @@ beautifulsoup4
 python-slugify
 pep8
 pylint
+gunicorn
+dj-database-url
+whitenoise
+python-decouple
