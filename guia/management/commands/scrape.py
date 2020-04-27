@@ -16,7 +16,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         ''' For each model, scrap the html and save information to the database '''
 
-        def update_city_list(soup):
+        def create_city_list(soup):
         
             print('Started updating cities list')
             city_select_tag = soup.find('select', {'name':'pfiltro_cod_municipio'})
@@ -40,7 +40,7 @@ class Command(BaseCommand):
             print('Finished adding cities')
 
 
-        def update_service_list(soup):
+        def create_service_list(soup):
             
             service_select_tag = soup.find('select', {'name':'pfiltro_cod_especialidade'})
             service_option_tags = service_select_tag.find_all('option')
@@ -60,7 +60,7 @@ class Command(BaseCommand):
                     print(f'Did not add {service}')
 
 
-        def update_place_list(url, parser):
+        def create_place_list(url, parser):
         
             form_data = {
                 'paction': 6, # Action code
@@ -106,7 +106,7 @@ class Command(BaseCommand):
                         print(f'Added {place_dict["name"]}')
                     except:
                         print(f'Did not add {place_dict["name"]} \n\n\n')
-                        #traceback.print_exc()
+                        traceback.print_exc()
             
         
         # helper functions
@@ -152,9 +152,15 @@ class Command(BaseCommand):
         html = urlopen(url)
         soup = BeautifulSoup(html, parser)
         
-        update_city_list(soup)
-        update_service_list(soup)
-        update_place_list(url, parser)
+        # clean previous information
+        City.objects.all().delete()
+        Service.objects.all().delete()
+        Place.objects.all().delete()
+        
+        # create model objects
+        create_city_list(soup)
+        create_service_list(soup)
+        create_place_list(url, parser)
 
 
     
