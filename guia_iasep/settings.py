@@ -12,20 +12,15 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 import dj_database_url
-from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '#@)-7l5x8u(_jy=o*slzj%_0n=nvwq=ke*t=87(rd@8&bub35z'
+SECRET_KEY = os.environ.get('SECRET_KEY', '*r!5Cp#k\Qu$(#gaw!G\$&r.*=n/!*$azy7Zv\6Vdt>G/[)r@(')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', default=False, cast=bool)
+DEBUG = os.environ.get('DEBUG', True)
 
 # security settings
 CSRF_COOKIE_SECURE = True
