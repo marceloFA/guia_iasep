@@ -1,5 +1,6 @@
 from django.core.management.base import BaseCommand
 from urllib.request import urlopen
+from datetime import datetime
 from bs4 import BeautifulSoup
 from slugify import slugify
 import requests
@@ -146,7 +147,14 @@ class Command(BaseCommand):
         
         ################## Main ##################        
         
-        
+        # Update only once a week 
+        # obtain week numvber from isocalendar
+        last_update_week_number = City.objects.first().created_date.isocalendar()[1]
+        current_week_number =  datetime.now().isocalendar()[1]
+        if last_update_week_number >= current_week_number:
+            print('Already updated data this week! Aborting scrape script')
+            quit()
+
         url  = 'http://www.e-saude.iasep.pa.gov.br/guiamedico/guia.cfm'
         parser = 'lxml'
         html = urlopen(url)
