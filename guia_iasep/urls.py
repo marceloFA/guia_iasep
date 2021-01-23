@@ -7,7 +7,7 @@ from guia import views as guia_views
 urlpatterns = [
     # administrative routes 
     path('.admin', admin.site.urls),
-    path(r'^\.well-known/', include('letsencrypt.urls')),
+    url(r'^\.well-known/', include('letsencrypt.urls')),
     
     # medical guide routes
     path('', guia_views.homepage, name="homepage"),
